@@ -1,0 +1,43 @@
+<head>
+  <title>stackOverflow</title>
+</head>
+
+<body>
+
+  {{> dashboard}}
+</body>
+
+<template name="dashboard">
+  <div class='dashboard'>
+    {{#if selected_name}}
+      <h1>Welcome {{selected_name}}</h1>
+      {{> questionForm}}
+      {{#each questions}}
+        {{>question}}
+      {{/each}}
+    {{else}}
+      {{> getUser}}
+      {{selected_name}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="getUser">
+  <h1>Enter your name</h1>
+  <input id="enterName" />
+  <input type="button" class="submitName" value="submit" />
+</template>
+
+<template name="questionForm">
+  <div class="questionForm">
+    <h1>Ask a Question</h1>
+    <textarea id="questionForm" />
+    <input type="button" class="submitQuestion" value="submit" />
+  </div>
+</template>
+
+<template name="question">
+  <div class="question">
+  {{content}}
+  </div>
+</template>
