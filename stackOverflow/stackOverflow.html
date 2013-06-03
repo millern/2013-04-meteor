@@ -14,6 +14,7 @@
       {{> questionForm}}
       {{#each questions}}
         {{>question}}
+        <p>----------------------------</p>
       {{/each}}
     {{else}}
       {{> getUser}}
@@ -39,5 +40,18 @@
 <template name="question">
   <div class="question">
   {{content}}
+  <input type="button" class="removeQuestion" value="x" />
+  <textarea class="respond" placeholder="Submit your answer" /><input type="button" class="submitAnswer" value="respond" />
+    {{#each answers}}
+      {{> answer}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="answer">
+  <div class="answer">
+    <p>{{content}} -- {{votes}}</p>
+    <input type="button" class="upvote" value="+1" />
+    <input type="button" class="downvote" value="-1" />
   </div>
 </template>
